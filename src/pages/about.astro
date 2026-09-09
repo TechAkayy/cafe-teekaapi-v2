@@ -1,5 +1,9 @@
 ---
+import { Picture, Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import interior from '../assets/images/interior.jpg';
+import espresso from '../assets/images/espresso.jpg';
 
 const milestones = [
   { year: '2017', title: 'An espresso window', desc: 'Two elbows wide, one machine, and a queue that never really stopped.' },
@@ -51,20 +55,20 @@ const team = [
         </p>
       </div>
       <div class="relative" data-reveal>
-        <img
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&h=1000&q=80"
+        <Picture
+          src={interior}
           alt="Warm café interior with pendant lights and wooden furniture"
-          width="800"
-          height="1000"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 768px) 50vw, 100vw"
           class="aspect-[4/5] w-full rounded-organic object-cover shadow-2xl"
           fetchpriority="high"
         />
         <figure class="absolute -bottom-8 -right-4 w-36 rotate-[5deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=400&h=300&q=80"
+          <Image
+            src={espresso}
             alt=""
-            width="400"
-            height="300"
+            width={400}
             loading="lazy"
             decoding="async"
             class="aspect-[4/3] w-full rounded object-cover"

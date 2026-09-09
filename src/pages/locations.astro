@@ -1,5 +1,10 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import interior from '../assets/images/interior.jpg';
+import friendsCoffee from '../assets/images/friends-coffee.jpg';
+import tables from '../assets/images/tables.jpg';
 
 const locations = [
   {
@@ -8,7 +13,7 @@ const locations = [
     address: '18 Hardware Lane, Melbourne VIC 3000',
     hours: 'Daily 7am – 4pm',
     phone: '(03) 9000 2017',
-    img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&h=500&q=80',
+    img: interior,
     alt: 'The warm interior of the original Hardware Lane café',
     perks: ['Laneway seating', 'Dog friendly', 'Full menu'],
     getting: 'Two minutes from Bourke Street Mall. Nearest station: Melbourne Central.',
@@ -19,7 +24,7 @@ const locations = [
     address: '204 Gertrude Street, Fitzroy VIC 3065',
     hours: 'Daily 7am – 4pm',
     phone: '(03) 9000 2021',
-    img: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=700&h=500&q=80',
+    img: friendsCoffee,
     alt: 'Guests chatting in the light-filled Fitzroy café',
     perks: ['Courtyard garden', 'Weekend DJs', 'Full menu + bakery'],
     getting: 'Tram 86 along Gertrude Street. On-street parking, plus a bike rack out front.',
@@ -30,7 +35,7 @@ const locations = [
     address: '89 Cecil Street, South Melbourne VIC 3205',
     hours: 'Wed – Sun 7am – 3pm',
     phone: '(03) 9000 2024',
-    img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&h=500&q=80',
+    img: tables,
     alt: 'Tables set for brunch service at the South Melbourne café',
     perks: ['Next to the market', 'Espresso window', 'Brunch menu'],
     getting: 'Across from South Melbourne Market. Tram 96 stops at the door.',
@@ -69,11 +74,12 @@ const locations = [
           data-reveal
         >
           <div class:list={['overflow-hidden max-md:order-first', i % 2 === 1 && 'md:order-last']}>
-            <img
+            <Picture
               src={img}
               alt={alt}
-              width="700"
-              height="500"
+              formats={['avif', 'webp']}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 768px) 50vw, 100vw"
               loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
               class="aspect-[7/5] w-full object-cover transition-transform duration-500 hover:scale-105"

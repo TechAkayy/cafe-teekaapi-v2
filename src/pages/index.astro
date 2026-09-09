@@ -1,12 +1,25 @@
 ---
+import { Picture, Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import heroLatte from '../assets/images/hero-latte.jpg';
+import polaroidCafe from '../assets/images/polaroid-cafe.jpg';
+import friendsCoffee from '../assets/images/friends-coffee.jpg';
+import dishLatte from '../assets/images/dish-latte.jpg';
+import dishBrunch from '../assets/images/dish-brunch.jpg';
+import dishHotcakes from '../assets/images/dish-hotcakes.jpg';
+import interior from '../assets/images/interior.jpg';
+import espresso from '../assets/images/espresso.jpg';
+import tables from '../assets/images/tables.jpg';
+import frenchToast from '../assets/images/french-toast.jpg';
+import barista from '../assets/images/barista.jpg';
 
 const dishes = [
   {
     name: 'Signature Latte',
     desc: 'Single-origin espresso, velvet milk, latte art on every pour.',
     price: '$5.5',
-    img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&h=700&q=80',
+    img: dishLatte,
     alt: 'Latte with heart-shaped latte art beside a newspaper',
     tag: 'Barista’s pick',
   },
@@ -14,7 +27,7 @@ const dishes = [
     name: 'Great Days Big Brunch',
     desc: 'Free-range eggs, halloumi, smashed avo, sourdough, house relish.',
     price: '$26',
-    img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&h=700&q=80',
+    img: dishBrunch,
     alt: 'A generous brunch plate with eggs and vegetables',
     tag: 'Most loved',
   },
@@ -22,7 +35,7 @@ const dishes = [
     name: 'Ricotta Hotcakes',
     desc: 'Lemon ricotta, seasonal berries, whipped honey butter.',
     price: '$22',
-    img: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&h=700&q=80',
+    img: dishHotcakes,
     alt: 'Stack of hotcakes with berries and syrup',
     tag: 'Weekend classic',
   },
@@ -59,10 +72,10 @@ const whatson = [
 ];
 
 const gallery = [
-  { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Cosy café interior with warm lighting' },
-  { img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Espresso cup with coffee beans scattered around' },
-  { img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Restaurant tables set for service' },
-  { img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&h=500&q=80', alt: 'French toast with fruit on a white plate' },
+  { img: interior, alt: 'Cosy café interior with warm lighting' },
+  { img: espresso, alt: 'Espresso cup with coffee beans scattered around' },
+  { img: tables, alt: 'Restaurant tables set for service' },
+  { img: frenchToast, alt: 'French toast with fruit on a white plate' },
 ];
 ---
 
@@ -131,22 +144,22 @@ const gallery = [
 
       <div class="relative" data-reveal>
         <div class="overflow-hidden rounded-organic shadow-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=1050&q=80"
+          <Picture
+            src={heroLatte}
             alt="A beautifully poured latte on a rustic wooden table"
-            width="900"
-            height="1050"
+            formats={['avif', 'webp']}
+            widths={[480, 720, 1120]}
+            sizes="(min-width: 768px) 50vw, 100vw"
             class="aspect-[6/7] w-full object-cover transition-transform duration-700 hover:scale-105"
             fetchpriority="high"
           />
         </div>
 
         <figure class="absolute -bottom-8 -left-6 w-36 rotate-[-6deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=400&h=300&q=80"
+          <Image
+            src={polaroidCafe}
             alt=""
-            width="400"
-            height="300"
+            width={400}
             loading="lazy"
             decoding="async"
             class="aspect-[4/3] w-full rounded object-cover"
@@ -176,11 +189,12 @@ const gallery = [
   <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="story-heading">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2">
       <div class="relative" data-reveal>
-        <img
-          src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&h=600&q=80"
+        <Picture
+          src={friendsCoffee}
           alt="Friends enjoying coffee together at a café"
-          width="800"
-          height="600"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 768px) 50vw, 100vw"
           loading="lazy"
           decoding="async"
           class="rounded-organic object-cover shadow-xl"
@@ -225,11 +239,12 @@ const gallery = [
           >
             <span class="absolute left-4 top-4 z-10 rounded-full bg-cream/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-secondary shadow-sm dark:bg-espresso/90 dark:text-secondary-soft">{tag}</span>
             <div class="overflow-hidden">
-              <img
+              <Picture
                 src={img}
                 alt={alt}
-                width="600"
-                height="700"
+                formats={['avif', 'webp']}
+                widths={[400, 600, 800]}
+                sizes="(min-width: 768px) 33vw, 100vw"
                 loading="lazy"
                 decoding="async"
                 class="aspect-[6/7] w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -288,11 +303,12 @@ const gallery = [
       {
         gallery.map(({ img, alt }, i) => (
           <li class:list={['overflow-hidden rounded-organic shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
-            <img
+            <Picture
               src={img}
               alt={alt}
-              width="500"
-              height="500"
+              formats={['avif', 'webp']}
+              widths={[400, 600]}
+              sizes="(min-width: 768px) 25vw, 50vw"
               loading="lazy"
               decoding="async"
               class="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -380,11 +396,12 @@ const gallery = [
           </a>
         </div>
       </div>
-      <img
-        src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&h=600&q=80"
+      <Picture
+        src={barista}
         alt="Barista at work behind the espresso machine"
-        width="800"
-        height="600"
+        formats={['avif', 'webp']}
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 768px) 50vw, 100vw"
         loading="lazy"
         decoding="async"
         class="rounded-organic-r object-cover shadow-xl"
