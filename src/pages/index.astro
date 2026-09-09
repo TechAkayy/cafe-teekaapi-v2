@@ -315,7 +315,7 @@ const gallery = [
         {
           testimonials.map(({ quote, name, detail }) => (
             <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-              <div class="flex gap-1 text-accent" aria-label="5 out of 5 stars">
+              <div class="flex gap-1 text-accent" role="img" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map(() => (
                   <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z" />

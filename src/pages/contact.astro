@@ -19,12 +19,25 @@ const faqs = [
   { q: 'Can you host events?', a: 'Fitzroy takes evening bookings for private events of up to 60. Email us for the events pack.' },
   { q: 'Do you sell beans?', a: 'Yes — our house blend and rotating single origins, whole bean or ground, at every counter.' },
 ];
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+});
 ---
 
 <BaseLayout
   title="Contact & Bookings — Cafe TeeKaapi"
   description="Book a table at Cafe TeeKaapi or get in touch — Hardware Lane, Fitzroy and South Melbourne. Open daily from 7am."
+  ogImage="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&h=630&q=80"
 >
+  <script type="application/ld+json" set:html={faqJsonLd} />
+
   <section class="relative overflow-hidden">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="absolute -left-20 top-8 size-64 rounded-full bg-primary/10 blur-3xl"></div>
@@ -196,6 +209,11 @@ const faqs = [
       const form = document.querySelector<HTMLFormElement>('[data-booking-form]');
       const status = form?.querySelector<HTMLElement>('[data-form-status]');
       if (!form || !status) return;
+      const date = form.querySelector<HTMLInputElement>('#bk-date');
+      if (date) {
+        const d = new Date();
+        date.min = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+      }
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         status.textContent = 'Booking request received! We’ll confirm by text shortly.';

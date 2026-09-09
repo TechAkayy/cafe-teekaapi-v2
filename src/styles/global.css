@@ -36,6 +36,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   ::selection {
@@ -68,6 +73,13 @@
 }
 
 /* Scroll-reveal animation (opt-in via data-reveal) */
+/* Without JS, show content immediately instead of hiding it */
+html:not(.js) [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(1.5rem);
