@@ -20,7 +20,12 @@ const team = [
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">
-    <div aria-hidden="true" class="pointer-events-none absolute -right-24 top-12 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -right-24 top-12 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+      <svg class="animate-drift absolute right-12 top-32 h-14 w-10 text-secondary/25 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+      </svg>
+    </div>
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
       <div>
         <p class="font-script text-3xl text-primary" data-reveal>our story</p>
@@ -43,7 +48,7 @@ const team = [
           alt="Warm café interior with pendant lights and wooden furniture"
           width="800"
           height="1000"
-          class="aspect-[4/5] w-full rounded-[2.5rem] object-cover shadow-2xl"
+          class="aspect-[4/5] w-full rounded-organic object-cover shadow-2xl"
           fetchpriority="high"
         />
         <figure class="absolute -bottom-8 -right-4 w-36 rotate-[5deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
@@ -72,8 +77,8 @@ const team = [
       <div class="mt-12 grid gap-6 md:grid-cols-3">
         {
           values.map(({ title, desc }, i) => (
-            <article class="rounded-[2rem] border border-ink/10 bg-paper p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-              <p class="mx-auto grid size-12 place-items-center rounded-full bg-secondary/10 font-display text-lg font-bold text-secondary dark:bg-secondary/25 dark:text-secondary-soft" aria-hidden="true">
+            <article class="rounded-organic border border-ink/10 bg-paper p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+              <p class="mx-auto grid size-12 place-items-center rounded-organic bg-secondary/10 font-display text-lg font-bold text-secondary dark:bg-secondary/25 dark:text-secondary-soft" aria-hidden="true">
                 {i + 1}
               </p>
               <h3 class="mt-5 font-display text-xl font-bold">{title}</h3>
@@ -94,8 +99,8 @@ const team = [
     <ul class="mt-12 grid gap-6 md:grid-cols-3">
       {
         team.map(({ name, role, bio }) => (
-          <li class="rounded-[2rem] border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-            <p class="grid size-14 place-items-center rounded-full bg-primary/15 font-display text-xl font-bold text-primary" aria-hidden="true">
+          <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <p class="grid size-14 place-items-center rounded-organic bg-primary/15 font-display text-xl font-bold text-primary" aria-hidden="true">
               {name.split(' ').map((n) => n[0]).join('')}
             </p>
             <h3 class="mt-5 font-display text-xl font-bold">{name}</h3>
@@ -109,7 +114,7 @@ const team = [
     <div class="mt-16 text-center" data-reveal>
       <a
         href="/menu"
-        class="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
+        class="group inline-flex items-center gap-2 rounded-organic bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
       >
         Now, brunch?
         <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

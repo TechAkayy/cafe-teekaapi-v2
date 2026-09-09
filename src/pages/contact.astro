@@ -14,7 +14,12 @@ const faqs = [
   description="Book a table at Cafe TeeKaapi or get in touch — Hardware Lane, Fitzroy and South Melbourne. Open daily from 7am."
 >
   <section class="relative overflow-hidden">
-    <div aria-hidden="true" class="pointer-events-none absolute -left-20 top-8 size-64 rounded-full bg-primary/10 blur-3xl"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -left-20 top-8 size-64 rounded-full bg-primary/10 blur-3xl"></div>
+      <svg class="animate-drift absolute right-12 top-16 h-14 w-10 text-secondary/25 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+      </svg>
+    </div>
     <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
       <p class="font-script text-3xl text-primary" data-reveal>say hello</p>
       <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl" data-reveal>We'd love to see you</h1>
@@ -27,7 +32,7 @@ const faqs = [
   <section class="mx-auto grid max-w-6xl gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-5">
     <!-- Info -->
     <div class="space-y-6 lg:col-span-2">
-      <div class="rounded-[2rem] border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+      <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
         <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Head office &amp; original room</h2>
         <address class="mt-3 text-sm not-italic leading-relaxed text-ink-soft dark:text-cream/75">
           18 Hardware Lane<br />Melbourne VIC 3000<br />
@@ -35,7 +40,7 @@ const faqs = [
         </address>
       </div>
 
-      <div class="rounded-[2rem] border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+      <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
         <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Hours</h2>
         <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/75">
           Open daily 7am – 4pm<br />
@@ -43,7 +48,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="rounded-[2rem] border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+      <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
         <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Reach us</h2>
         <ul class="mt-3 space-y-2 text-sm text-ink-soft dark:text-cream/75">
           <li><a href="tel:+61390002017" class="transition-colors hover:text-primary">(03) 9000 2017</a></li>
@@ -57,7 +62,7 @@ const faqs = [
     <div id="book" class="scroll-mt-24 lg:col-span-3" data-reveal>
       <form
         data-booking-form
-        class="grid gap-5 rounded-[2rem] border border-ink/10 bg-paper p-8 shadow-sm sm:grid-cols-2 dark:border-cream/10 dark:bg-espresso-soft"
+        class="grid gap-5 rounded-organic border border-ink/10 bg-paper p-8 shadow-sm sm:grid-cols-2 dark:border-cream/10 dark:bg-espresso-soft"
       >
         <div class="sm:col-span-2">
           <p class="font-script text-2xl text-primary">reserve a spot</p>
@@ -110,7 +115,7 @@ const faqs = [
 
         <div class="sm:col-span-2">
           <button type="submit"
-            class="w-full rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong">
+            class="w-full rounded-organic bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong">
             Request booking
           </button>
           <p data-form-status role="status" aria-live="polite" class="mt-3 hidden text-center text-sm font-semibold text-secondary dark:text-secondary-soft"></p>
@@ -129,7 +134,7 @@ const faqs = [
       <div class="mt-10 space-y-4">
         {
           faqs.map(({ q, a }) => (
-            <details class="group rounded-2xl border border-ink/10 bg-paper px-6 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <details class="group rounded-organic border border-ink/10 bg-paper px-6 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
               <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display font-bold marker:hidden">
                 {q}
                 <svg class="size-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">

@@ -60,9 +60,12 @@ const gallery = [
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="absolute -right-24 top-16 size-80 rounded-full bg-primary/10 blur-3xl"></div>
       <div class="absolute -left-24 bottom-0 size-72 rounded-full bg-secondary/10 blur-3xl"></div>
-      <!-- Botanical leaf -->
-      <svg class="animate-sway absolute right-10 top-24 h-24 w-16 text-secondary/30 max-md:hidden" viewBox="0 0 40 80" fill="currentColor">
-        <path d="M20 0C10 20 0 35 20 80 40 35 30 20 20 0z" />
+      <!-- Botanical leaves -->
+      <svg class="animate-sway absolute right-10 top-24 h-24 w-16 text-secondary/30 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+      </svg>
+      <svg class="animate-drift absolute left-8 top-40 h-12 w-8 text-primary/30 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
       </svg>
       <!-- Wavy lines -->
       <svg class="absolute bottom-10 left-8 w-28 text-secondary/40 max-md:hidden" viewBox="0 0 100 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
@@ -73,13 +76,16 @@ const gallery = [
 
     <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-secondary dark:text-secondary-soft" data-reveal>
+        <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary dark:text-secondary-soft" data-reveal>
+          <svg class="size-4 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+          </svg>
           Coffee · Brunch · Good Vibes
         </p>
 
         <h1 class="mt-6" data-reveal>
           <span class="font-script text-4xl text-primary sm:text-5xl">Where</span><br />
-          <span class="font-display text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+          <span class="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Great Days<br />Begin <em class="text-secondary dark:text-secondary-soft">Here</em>
           </span>
         </h1>
@@ -91,7 +97,7 @@ const gallery = [
         <div class="mt-8 flex flex-wrap items-center gap-4" data-reveal>
           <a
             href="/menu"
-            class="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
+            class="group inline-flex items-center gap-2 rounded-organic bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
           >
             Explore Menu
             <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -100,7 +106,7 @@ const gallery = [
           </a>
           <a
             href="/about"
-            class="rounded-full border-2 border-ink/20 px-7 py-3.5 font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:text-secondary dark:border-cream/25 dark:hover:border-secondary-soft dark:hover:text-secondary-soft"
+            class="rounded-organic-r border-2 border-ink/20 px-7 py-3.5 font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:text-secondary dark:border-cream/25 dark:hover:border-secondary-soft dark:hover:text-secondary-soft"
           >
             Our Story
           </a>
@@ -108,7 +114,7 @@ const gallery = [
       </div>
 
       <div class="relative" data-reveal>
-        <div class="overflow-hidden rounded-[2.5rem] shadow-2xl">
+        <div class="overflow-hidden rounded-organic shadow-2xl">
           <img
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=1050&q=80"
             alt="A beautifully poured latte on a rustic wooden table"
@@ -180,9 +186,9 @@ const gallery = [
           height="600"
           loading="lazy"
           decoding="async"
-          class="rounded-[2rem] object-cover shadow-xl"
+          class="rounded-organic object-cover shadow-xl"
         />
-        <div aria-hidden="true" class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[2rem] border-2 border-primary/40"></div>
+        <div aria-hidden="true" class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-organic-r border-2 border-primary/40"></div>
       </div>
     </div>
   </section>
@@ -198,7 +204,7 @@ const gallery = [
       {
         dishes.map(({ name, desc, price, img, alt }) => (
           <li
-            class="group overflow-hidden rounded-[2rem] border border-ink/10 bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft"
+            class="group overflow-hidden rounded-organic border border-ink/10 bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft"
             data-reveal
           >
             <div class="overflow-hidden">
@@ -244,7 +250,7 @@ const gallery = [
       <ul class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
         {
           gallery.map(({ img, alt }, i) => (
-            <li class:list={['overflow-hidden rounded-3xl shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
+            <li class:list={['overflow-hidden rounded-organic shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
               <img
                 src={img}
                 alt={alt}
@@ -271,7 +277,7 @@ const gallery = [
     <ul class="mt-12 grid gap-6 md:grid-cols-3">
       {
         testimonials.map(({ quote, name, detail }) => (
-          <li class="rounded-[2rem] border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+          <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
             <div class="flex gap-1 text-accent" aria-label="5 out of 5 stars">
               {Array.from({ length: 5 }).map(() => (
                 <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -292,7 +298,10 @@ const gallery = [
 
   <!-- Visit us -->
   <section class="px-4 pb-20 sm:px-6" aria-labelledby="visit-heading">
-    <div class="mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[2.5rem] bg-secondary px-8 py-14 text-cream shadow-2xl md:grid-cols-2 md:px-14 dark:bg-secondary-strong" data-reveal>
+    <div class="relative mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-organic bg-secondary px-8 py-14 text-cream shadow-2xl md:grid-cols-2 md:px-14 dark:bg-secondary-strong" data-reveal>
+      <svg class="animate-sway absolute -right-8 -top-8 size-40 text-cream/10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+      </svg>
       <div>
         <p class="font-script text-3xl text-primary-soft">come say hi</p>
         <h2 id="visit-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Visit us on Hardware Lane</h2>
@@ -300,10 +309,10 @@ const gallery = [
           Open daily 7am–4pm. Two more rooms in Fitzroy and South Melbourne — same beans, same welcome.
         </p>
         <div class="mt-7 flex flex-wrap gap-4">
-          <a href="/locations" class="rounded-full bg-cream px-7 py-3.5 font-semibold text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-soft">
+          <a href="/locations" class="rounded-organic bg-cream px-7 py-3.5 font-semibold text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-soft">
             All locations
           </a>
-          <a href="/contact#book" class="rounded-full border-2 border-cream/40 px-7 py-3.5 font-semibold text-cream transition-all duration-200 hover:-translate-y-0.5 hover:border-cream">
+          <a href="/contact#book" class="rounded-organic-r border-2 border-cream/40 px-7 py-3.5 font-semibold text-cream transition-all duration-200 hover:-translate-y-0.5 hover:border-cream">
             Book a Table
           </a>
         </div>
@@ -315,7 +324,7 @@ const gallery = [
         height="600"
         loading="lazy"
         decoding="async"
-        class="rounded-[2rem] object-cover shadow-xl"
+        class="rounded-organic-r object-cover shadow-xl"
       />
     </div>
   </section>

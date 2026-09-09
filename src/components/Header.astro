@@ -13,10 +13,21 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   class="sticky top-0 z-50 border-b border-ink/10 bg-cream/85 backdrop-blur-md transition-colors duration-300 dark:border-cream/10 dark:bg-espresso/85"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href="/" class="flex flex-col leading-none">
-      <span class="font-script text-lg leading-none text-primary">cafe</span>
-      <span class="font-display text-2xl font-bold tracking-tight text-secondary dark:text-secondary-soft">TeeKaapi</span>
-      <span class="text-[9px] font-semibold uppercase tracking-[0.35em] text-ink-soft dark:text-cream/50">Est. 2017</span>
+    <a href="/" class="group flex items-center gap-2.5">
+      <span
+        class="grid size-11 shrink-0 place-items-center rounded-organic bg-secondary text-cream shadow-sm transition-transform duration-300 group-hover:-rotate-6 dark:bg-secondary/80"
+        aria-hidden="true"
+      >
+        <svg class="size-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+          <path d="M12 4v11" stroke="var(--color-secondary-strong)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+        </svg>
+      </span>
+      <span class="flex flex-col leading-none">
+        <span class="font-script text-lg leading-none text-primary">cafe</span>
+        <span class="font-display text-2xl font-bold tracking-tight text-secondary dark:text-secondary-soft">TeeKaapi</span>
+        <span class="text-[9px] font-semibold uppercase tracking-[0.35em] text-ink-soft dark:text-cream/50">Est. 2017</span>
+      </span>
     </a>
 
     <nav aria-label="Main navigation" class="hidden items-center gap-1 md:flex">
@@ -56,7 +67,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
       <a
         href="/contact#book"
-        class="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-cream shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong hover:shadow-lg sm:inline-block"
+        class="hidden rounded-organic bg-primary px-5 py-2.5 text-sm font-semibold text-cream shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong hover:shadow-lg sm:inline-block"
       >
         Book a Table
       </a>
@@ -99,7 +110,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <li class="pt-2">
         <a
           href="/contact#book"
-          class="block rounded-full bg-primary px-5 py-3 text-center font-semibold text-cream transition-colors hover:bg-primary-strong"
+          class="block rounded-organic bg-primary px-5 py-3 text-center font-semibold text-cream transition-colors hover:bg-primary-strong"
         >
           Book a Table
         </a>

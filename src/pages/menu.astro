@@ -54,7 +54,12 @@ const tagLabels: Record<string, string> = { V: 'Vegetarian', VG: 'Vegan', GF: 'G
   description="All-day brunch, handcrafted coffee, and morning-baked sweets. Browse the full Cafe TeeKaapi menu — served daily 7am to 4pm."
 >
   <section class="relative overflow-hidden">
-    <div aria-hidden="true" class="pointer-events-none absolute -left-24 top-10 size-64 rounded-full bg-secondary/10 blur-3xl"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -left-24 top-10 size-64 rounded-full bg-secondary/10 blur-3xl"></div>
+      <svg class="animate-sway absolute right-10 top-16 h-16 w-10 text-primary/25 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+      </svg>
+    </div>
     <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
       <p class="font-script text-3xl text-primary" data-reveal>eat, drink, linger</p>
       <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl" data-reveal>The menu</h1>
@@ -81,9 +86,12 @@ const tagLabels: Record<string, string> = { V: 'Vegetarian', VG: 'Vegan', GF: 'G
     {
       sections.map(({ title, blurb, items }) => (
         <section id={title.toLowerCase().replace(/[^a-z]+/g, '-')} aria-label={title} class="scroll-mt-24">
-          <div class="flex items-baseline gap-4" data-reveal>
+          <div class="flex items-center gap-4" data-reveal>
             <h2 class="shrink-0 font-display text-2xl font-bold tracking-tight text-secondary sm:text-3xl dark:text-secondary-soft">{title}</h2>
             <div aria-hidden="true" class="h-px w-full bg-ink/15 dark:bg-cream/15" />
+            <svg class="size-6 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
+            </svg>
           </div>
           <p class="mt-2 font-script text-xl text-primary" data-reveal>{blurb}</p>
 
@@ -115,7 +123,7 @@ const tagLabels: Record<string, string> = { V: 'Vegetarian', VG: 'Vegan', GF: 'G
       ))
     }
 
-    <p class="rounded-3xl bg-cream-soft p-5 text-center text-sm text-ink-soft dark:bg-espresso-soft dark:text-cream/70" data-reveal>
+    <p class="rounded-organic bg-cream-soft p-5 text-center text-sm text-ink-soft dark:bg-espresso-soft dark:text-cream/70" data-reveal>
       Dietaries welcome — most dishes adapt happily. Weekend tables go fast:
       <a href="/contact#book" class="font-semibold text-primary underline-offset-2 hover:underline">book ahead</a>.
     </p>

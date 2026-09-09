@@ -5,30 +5,32 @@
 
 @theme {
   /*
-   * ── Brand tokens ─────────────────────────────────────────────
+   * ── Brand tokens · “Botanical clay & moss” ────────────────────
    * Change primary/secondary here and the entire site rebrands.
    */
-  --color-primary: #e1701a;
-  --color-primary-strong: #b95510;
-  --color-primary-soft: #f8d9bd;
-  --color-secondary: #17605a;
-  --color-secondary-strong: #0f4540;
-  --color-secondary-soft: #bcded9;
-  --color-accent: #c99a3c;
+  --color-primary: #b85c38; /* terracotta clay */
+  --color-primary-strong: #8f4529;
+  --color-primary-soft: #f1d8c8;
+
+  --color-secondary: #3f5d45; /* forest green */
+  --color-secondary-strong: #2c4433;
+  --color-secondary-soft: #c8d8c4; /* sage */
+
+  --color-accent: #c8963e; /* ochre / honey */
 
   /* Surfaces & ink */
-  --color-cream: #faf4e8;
-  --color-cream-soft: #f2e8d4;
-  --color-paper: #fffcf5;
-  --color-espresso: #191410;
-  --color-espresso-soft: #262019;
-  --color-ink: #2b2018;
-  --color-ink-soft: #6b5b4c;
+  --color-cream: #f4eee1; /* warm sand */
+  --color-cream-soft: #e9e0cd;
+  --color-paper: #fbf6ec;
+  --color-espresso: #1b1f18; /* deep forest black */
+  --color-espresso-soft: #252a20;
+  --color-ink: #2c2a20;
+  --color-ink-soft: #6f6553;
 
   /* Typography */
-  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-script: "Caveat", cursive;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Karla", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -46,6 +48,23 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+  /* Subtle organic grain over the whole canvas */
+  body {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--color-ink) 4%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+}
+
+/* Organic, hand-crafted corner — one soft leaf edge + one crisp edge */
+.rounded-organic {
+  border-radius: 2rem 2rem 2.5rem 1.25rem;
+}
+.rounded-organic-r {
+  border-radius: 2rem 2rem 1.25rem 2.5rem;
 }
 
 /* Scroll-reveal animation (opt-in via data-reveal) */
@@ -62,12 +81,12 @@
 
 /* Gentle sway for botanical decorations */
 @keyframes sway {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
 }
 
 .animate-sway {
-  animation: sway 7s ease-in-out infinite;
+  animation: sway 8s ease-in-out infinite;
   transform-origin: bottom center;
 }
 
@@ -77,7 +96,17 @@
 }
 
 .animate-spin-slow {
-  animation: spin-slow 28s linear infinite;
+  animation: spin-slow 32s linear infinite;
+}
+
+/* Drift for floating leaves */
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
+}
+
+.animate-drift {
+  animation: drift 9s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -92,7 +121,8 @@
   }
 
   .animate-sway,
-  .animate-spin-slow {
+  .animate-spin-slow,
+  .animate-drift {
     animation: none;
   }
 
