@@ -8,6 +8,7 @@ const dishes = [
     price: '$5.5',
     img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&h=700&q=80',
     alt: 'Latte with heart-shaped latte art beside a newspaper',
+    tag: 'Barista’s pick',
   },
   {
     name: 'Great Days Big Brunch',
@@ -15,6 +16,7 @@ const dishes = [
     price: '$26',
     img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&h=700&q=80',
     alt: 'A generous brunch plate with eggs and vegetables',
+    tag: 'Most loved',
   },
   {
     name: 'Ricotta Hotcakes',
@@ -22,7 +24,14 @@ const dishes = [
     price: '$22',
     img: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&h=700&q=80',
     alt: 'Stack of hotcakes with berries and syrup',
+    tag: 'Weekend classic',
   },
+];
+
+const process = [
+  { step: '01', title: 'Source', desc: 'Traceable single-origin greens, bought direct from growers we know by name.' },
+  { step: '02', title: 'Roast', desc: 'Small-batch roasted locally each week — never more than ten days old.' },
+  { step: '03', title: 'Pour', desc: 'Dialled in every morning, cupped blind, and poured with a steady hand.' },
 ];
 
 const testimonials = [
@@ -43,6 +52,12 @@ const testimonials = [
   },
 ];
 
+const whatson = [
+  { title: 'Bottomless batch brew', detail: 'Free top-ups on filter before 9am, weekdays.' },
+  { title: 'Saturday live sets', detail: 'Acoustic sessions in the Fitzroy courtyard from 10am.' },
+  { title: 'New season, new stack', detail: 'Fig, walnut & honey hotcakes — while the figs last.' },
+];
+
 const gallery = [
   { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Cosy café interior with warm lighting' },
   { img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Espresso cup with coffee beans scattered around' },
@@ -60,17 +75,11 @@ const gallery = [
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="absolute -right-24 top-16 size-80 rounded-full bg-primary/10 blur-3xl"></div>
       <div class="absolute -left-24 bottom-0 size-72 rounded-full bg-secondary/10 blur-3xl"></div>
-      <!-- Botanical leaves -->
       <svg class="animate-sway absolute right-10 top-24 h-24 w-16 text-secondary/30 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
       </svg>
       <svg class="animate-drift absolute left-8 top-40 h-12 w-8 text-primary/30 max-md:hidden" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
-      </svg>
-      <!-- Wavy lines -->
-      <svg class="absolute bottom-10 left-8 w-28 text-secondary/40 max-md:hidden" viewBox="0 0 100 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-        <path d="M2 6c8-8 16 8 24 0s16 8 24 0 16 8 24 0 16 8 24 0" />
-        <path d="M2 18c8-8 16 8 24 0s16 8 24 0 16 8 24 0 16 8 24 0" />
       </svg>
     </div>
 
@@ -80,18 +89,19 @@ const gallery = [
           <svg class="size-4 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 22C7.6 17 5 13 5 9a7 7 0 0 1 14 0c0 4-2.6 8-7 13z" />
           </svg>
-          Coffee · Brunch · Good Vibes
+          Hardware Lane · Est. 2017
         </p>
 
         <h1 class="mt-6" data-reveal>
-          <span class="font-script text-4xl text-primary sm:text-5xl">Where</span><br />
+          <span class="font-script text-4xl text-primary sm:text-5xl">Slow mornings,</span><br />
           <span class="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Great Days<br />Begin <em class="text-secondary dark:text-secondary-soft">Here</em>
+            poured with <em class="text-secondary dark:text-secondary-soft">intention</em>
           </span>
         </h1>
 
         <p class="mt-6 max-w-md text-lg leading-relaxed text-ink-soft dark:text-cream/70" data-reveal>
-          Handcrafted coffee, delicious brunch and warm hospitality — all day, every day.
+          Single-origin coffee roasted down the road, brunch baked from scratch each morning, and a
+          room that remembers your name. Melbourne's warmest corner since 2017.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-4" data-reveal>
@@ -99,18 +109,24 @@ const gallery = [
             href="/menu"
             class="group inline-flex items-center gap-2 rounded-organic bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
           >
-            Explore Menu
+            See the menu
             <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14m-6-6 6 6-6 6" />
             </svg>
           </a>
           <a
-            href="/about"
+            href="/contact#book"
             class="rounded-organic-r border-2 border-ink/20 px-7 py-3.5 font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:text-secondary dark:border-cream/25 dark:hover:border-secondary-soft dark:hover:text-secondary-soft"
           >
-            Our Story
+            Book a table
           </a>
         </div>
+
+        <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-soft dark:text-cream/70" data-reveal>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>Open daily 7–4</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>Roasted locally</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>Baked fresh daily</li>
+        </ul>
       </div>
 
       <div class="relative" data-reveal>
@@ -125,7 +141,6 @@ const gallery = [
           />
         </div>
 
-        <!-- Polaroid -->
         <figure class="absolute -bottom-8 -left-6 w-36 rotate-[-6deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
           <img
             src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=400&h=300&q=80"
@@ -139,7 +154,6 @@ const gallery = [
           <figcaption class="mt-1.5 text-center font-script text-lg text-ink-soft dark:text-cream/60">TeeKaapi</figcaption>
         </figure>
 
-        <!-- Brewed with passion badge -->
         <div class="absolute -right-4 top-6 grid size-24 place-items-center sm:size-28" aria-hidden="true">
           <svg class="animate-spin-slow absolute inset-0 size-full text-accent" viewBox="0 0 100 100">
             <defs>
@@ -158,26 +172,9 @@ const gallery = [
     </div>
   </section>
 
-  <!-- Our story teaser -->
+  <!-- Story teaser -->
   <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="story-heading">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2">
-      <div data-reveal>
-        <p class="font-script text-3xl text-primary">since 2017</p>
-        <h2 id="story-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          A little lane, a lot of heart
-        </h2>
-        <p class="mt-5 leading-relaxed text-ink-soft dark:text-cream/70">
-          What began as a tiny espresso window on Hardware Lane grew into Melbourne's warmest
-          brunch room. Nine years on, we still hand-pour every coffee, bake every morning, and
-          greet half our guests by name.
-        </p>
-        <a href="/about" class="group mt-7 inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-secondary-strong dark:text-secondary-soft">
-          Read our story
-          <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14m-6-6 6 6-6 6" />
-          </svg>
-        </a>
-      </div>
       <div class="relative" data-reveal>
         <img
           src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&h=600&q=80"
@@ -190,23 +187,43 @@ const gallery = [
         />
         <div aria-hidden="true" class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-organic-r border-2 border-primary/40"></div>
       </div>
+      <div data-reveal>
+        <p class="font-script text-3xl text-primary">since 2017</p>
+        <h2 id="story-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          A little lane, a lot of heart
+        </h2>
+        <p class="mt-5 leading-relaxed text-ink-soft dark:text-cream/70">
+          TeeKaapi began as an espresso window barely wide enough for two elbows — and a queue that
+          stretched down Hardware Lane anyway. Nine years on we're a proper room with a proper
+          kitchen, but the promise hasn't moved: hand-poured coffee, bread baked before sunrise, and
+          a greeting for half our guests by name.
+        </p>
+        <a href="/about" class="group mt-7 inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-secondary-strong dark:text-secondary-soft">
+          Read our story
+          <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14m-6-6 6 6-6 6" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Signature dishes -->
+  <!-- From the pass -->
   <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="dishes-heading">
     <div class="text-center" data-reveal>
-      <p class="font-script text-3xl text-primary">crowd favourites</p>
-      <h2 id="dishes-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Signature dishes</h2>
+      <p class="font-script text-3xl text-primary">from the pass</p>
+      <h2 id="dishes-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Made to be remembered</h2>
+      <p class="mx-auto mt-3 max-w-xl text-ink-soft dark:text-cream/70">Three plates (and one pour) our regulars refuse to share.</p>
     </div>
 
     <ul class="mt-12 grid gap-6 md:grid-cols-3">
       {
-        dishes.map(({ name, desc, price, img, alt }) => (
+        dishes.map(({ name, desc, price, img, alt, tag }) => (
           <li
-            class="group overflow-hidden rounded-organic border border-ink/10 bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft"
+            class="group relative overflow-hidden rounded-organic border border-ink/10 bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft"
             data-reveal
           >
+            <span class="absolute left-4 top-4 z-10 rounded-full bg-cream/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-secondary shadow-sm dark:bg-espresso/90 dark:text-secondary-soft">{tag}</span>
             <div class="overflow-hidden">
               <img
                 src={img}
@@ -240,26 +257,76 @@ const gallery = [
     </p>
   </section>
 
-  <!-- Gallery -->
-  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="gallery-heading">
+  <!-- How we brew -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="process-heading">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="text-center" data-reveal>
-        <p class="font-script text-3xl text-primary">moments</p>
-        <h2 id="gallery-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Life at TeeKaapi</h2>
+        <p class="font-script text-3xl text-primary">the ritual</p>
+        <h2 id="process-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">From green bean to your cup</h2>
       </div>
-      <ul class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+      <ol class="mt-12 grid gap-6 md:grid-cols-3">
         {
-          gallery.map(({ img, alt }, i) => (
-            <li class:list={['overflow-hidden rounded-organic shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
-              <img
-                src={img}
-                alt={alt}
-                width="500"
-                height="500"
-                loading="lazy"
-                decoding="async"
-                class="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
+          process.map(({ step, title, desc }) => (
+            <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+              <p class="font-display text-4xl font-bold text-primary/30" aria-hidden="true">{step}</p>
+              <h3 class="mt-3 font-display text-xl font-bold">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{desc}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="gallery-heading">
+    <div class="text-center" data-reveal>
+      <p class="font-script text-3xl text-primary">moments</p>
+      <h2 id="gallery-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Life at TeeKaapi</h2>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+      {
+        gallery.map(({ img, alt }, i) => (
+          <li class:list={['overflow-hidden rounded-organic shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
+            <img
+              src={img}
+              alt={alt}
+              width="500"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              class="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="testimonials-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="text-center" data-reveal>
+        <p class="font-script text-3xl text-primary">kind words</p>
+        <h2 id="testimonials-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">From our regulars</h2>
+      </div>
+
+      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          testimonials.map(({ quote, name, detail }) => (
+            <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+              <div class="flex gap-1 text-accent" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map(() => (
+                  <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <blockquote class="mt-4">
+                <p class="leading-relaxed text-ink-soft dark:text-cream/75">“{quote}”</p>
+              </blockquote>
+              <p class="mt-5 font-display font-bold">{name}</p>
+              <p class="text-sm text-ink-soft dark:text-cream/60">{detail}</p>
             </li>
           ))
         }
@@ -267,29 +334,25 @@ const gallery = [
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="testimonials-heading">
+  <!-- What's on -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="whatson-heading">
     <div class="text-center" data-reveal>
-      <p class="font-script text-3xl text-primary">kind words</p>
-      <h2 id="testimonials-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">From our regulars</h2>
+      <p class="font-script text-3xl text-primary">what's on</p>
+      <h2 id="whatson-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Happening right now</h2>
     </div>
-
     <ul class="mt-12 grid gap-6 md:grid-cols-3">
       {
-        testimonials.map(({ quote, name, detail }) => (
-          <li class="rounded-organic border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-            <div class="flex gap-1 text-accent" aria-label="5 out of 5 stars">
-              {Array.from({ length: 5 }).map(() => (
-                <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z" />
-                </svg>
-              ))}
+        whatson.map(({ title, detail }) => (
+          <li class="flex items-start gap-4 rounded-organic border border-ink/10 bg-paper p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <span class="grid size-10 shrink-0 place-items-center rounded-organic bg-primary/15 text-primary" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3v6a6 6 0 0 0 12 0V3M6 3H4m2 0h12m2 0h-2M8 13v4m4-4v4m4-4v4" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="font-display text-lg font-bold">{title}</h3>
+              <p class="mt-1 text-sm text-ink-soft dark:text-cream/70">{detail}</p>
             </div>
-            <blockquote class="mt-4">
-              <p class="leading-relaxed text-ink-soft dark:text-cream/75">“{quote}”</p>
-            </blockquote>
-            <p class="mt-5 font-display font-bold">{name}</p>
-            <p class="text-sm text-ink-soft dark:text-cream/60">{detail}</p>
           </li>
         ))
       }
@@ -313,7 +376,7 @@ const gallery = [
             All locations
           </a>
           <a href="/contact#book" class="rounded-organic-r border-2 border-cream/40 px-7 py-3.5 font-semibold text-cream transition-all duration-200 hover:-translate-y-0.5 hover:border-cream">
-            Book a Table
+            Book a table
           </a>
         </div>
       </div>

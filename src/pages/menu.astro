@@ -6,12 +6,22 @@ const sections = [
     title: 'Coffee & Drinks',
     blurb: 'Single origin, locally roasted, dialled in daily.',
     items: [
-      { name: 'Espresso / Long Black', desc: 'Seasonal single origin.', price: '$4.5', tags: ['VG', 'GF'] },
-      { name: 'Flat White / Latte / Cap', desc: 'Velvet-textured milk, latte art standard.', price: '$5.5', tags: ['V'] },
-      { name: 'Batch Brew', desc: 'Rotating filter roast, bottomless before 9am.', price: '$5', tags: ['VG', 'GF'] },
-      { name: 'Chai Latte', desc: 'House-spiced, honey-sweetened, properly simmered.', price: '$6', tags: ['V'] },
+      { name: 'Espresso / Long Black', desc: 'Seasonal single origin — cocoa & hazelnut.', price: '$4.5', tags: ['VG', 'GF'], pick: false },
+      { name: 'Flat White / Latte / Cap', desc: 'Velvet-textured milk, latte art standard.', price: '$5.5', tags: ['V'], pick: true },
+      { name: 'Batch Brew', desc: 'Rotating filter roast, bottomless before 9am.', price: '$5', tags: ['VG', 'GF'], pick: false },
+      { name: 'Chai Latte', desc: 'House-spiced, honey-sweetened, properly simmered.', price: '$6', tags: ['V'], pick: false },
+      { name: 'South Indian Filter', desc: 'Our grandmothers’ recipe — slow-dripped, strong, sweet.', price: '$5.5', tags: ['V'], pick: true },
+      { name: 'Mocha / Hot Chocolate', desc: 'Single-origin drinking chocolate, not a powder in sight.', price: '$6', tags: ['V'], pick: false },
+    ],
+  },
+  {
+    title: 'Cold & Iced',
+    blurb: 'For the days Melbourne turns it up.',
+    items: [
+      { name: 'Iced Latte', desc: 'Double shot, cold milk, no ice-cream theatrics.', price: '$7', tags: ['V'] },
+      { name: 'Cold Brew', desc: 'Steeped 18 hours, served black or with oat.', price: '$6.5', tags: ['VG', 'GF'] },
       { name: 'Fresh OJ / Seasonal Juice', desc: 'Pressed to order.', price: '$8', tags: ['VG', 'GF'] },
-      { name: 'Iced Coffee (proper)', desc: 'Double shot, milk, no ice-cream theatrics.', price: '$7', tags: ['V'] },
+      { name: 'House Lemonade', desc: 'Lemon, ginger, a whisper of honey.', price: '$7', tags: ['V'] },
     ],
   },
   {
@@ -20,18 +30,19 @@ const sections = [
     items: [
       { name: 'Great Days Big Brunch', desc: 'Eggs any way, halloumi, avo, mushrooms, relish, sourdough.', price: '$26', tags: [] },
       { name: 'Ricotta Hotcakes', desc: 'Lemon ricotta, berries, whipped honey butter.', price: '$22', tags: ['V'] },
+      { name: 'Fig, Walnut & Honey Hotcakes', desc: 'The seasonal stack — while the figs last.', price: '$23', tags: ['V'] },
       { name: 'Smashed Avo', desc: 'Feta, pepitas, pickled onion, lime, chilli oil, sourdough.', price: '$19', tags: ['V'] },
-      { name: 'Mushroom Toast', desc: 'Butter-roasted mixed mushrooms, whipped goat cheese, thyme.', price: '$20', tags: ['V'] },
       { name: 'Chilli Scramble', desc: 'Soft scrambled eggs, crispy chilli oil, spring onion, milk bun.', price: '$18', tags: ['V'] },
       { name: 'Brekkie Roll', desc: 'Bacon, fried egg, hash brown, cheese, house BBQ sauce.', price: '$16', tags: [] },
     ],
   },
   {
-    title: 'Lunch',
+    title: 'Lunch & Bowls',
     blurb: 'From 11:30am.',
     items: [
-      { name: 'Chicken Schnitzel Sando', desc: 'Slaw, pickles, garlic aioli, milk bread.', price: '$19', tags: [] },
       { name: 'Harvest Bowl', desc: 'Roast pumpkin, quinoa, kale, hummus, seeds, tahini dressing.', price: '$21', tags: ['VG', 'GF'] },
+      { name: 'Grain & Greens Bowl', desc: 'Farro, whipped ricotta, charred broccoli, lemon.', price: '$20', tags: ['V'] },
+      { name: 'Chicken Schnitzel Sando', desc: 'Slaw, pickles, garlic aioli, milk bread.', price: '$19', tags: [] },
       { name: 'TeeKaapi Burger', desc: 'Grass-fed beef, cheddar, tomato jam, butter lettuce, chips.', price: '$24', tags: [] },
     ],
   },
@@ -42,6 +53,7 @@ const sections = [
       { name: 'Almond Croissant', desc: 'Twice-baked, frangipane-filled.', price: '$8', tags: ['V'] },
       { name: 'Banana Bread', desc: 'Toasted, espresso butter.', price: '$9', tags: ['V'] },
       { name: 'Seasonal Cake', desc: 'Ask what came out of the oven today.', price: '$9', tags: ['V'] },
+      { name: 'Lamington', desc: 'House-made, proper chocolate, hand-dipped.', price: '$7', tags: ['V'] },
     ],
   },
 ];
@@ -96,10 +108,15 @@ const tagLabels: Record<string, string> = { V: 'Vegetarian', VG: 'Vegan', GF: 'G
           <p class="mt-2 font-script text-xl text-primary" data-reveal>{blurb}</p>
 
           <ul class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
-            {items.map(({ name, desc, price, tags }) => (
+            {items.map(({ name, desc, price, tags, pick }) => (
               <li class="group" data-reveal>
                 <div class="flex items-baseline justify-between gap-3">
-                  <h3 class="font-display text-lg font-bold transition-colors duration-200 group-hover:text-primary">{name}</h3>
+                  <h3 class="font-display text-lg font-bold transition-colors duration-200 group-hover:text-primary">
+                    {name}
+                    {pick && (
+                      <span class="ml-2 align-middle rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary">Pick</span>
+                    )}
+                  </h3>
                   <span aria-hidden="true" class="mb-1 grow border-b border-dotted border-ink/25 dark:border-cream/25" />
                   <span class="shrink-0 font-display font-bold text-primary">{price}</span>
                 </div>

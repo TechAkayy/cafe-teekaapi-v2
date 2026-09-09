@@ -11,6 +11,7 @@ const locations = [
     img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&h=500&q=80',
     alt: 'The warm interior of the original Hardware Lane café',
     perks: ['Laneway seating', 'Dog friendly', 'Full menu'],
+    getting: 'Two minutes from Bourke Street Mall. Nearest station: Melbourne Central.',
   },
   {
     name: 'Fitzroy',
@@ -21,6 +22,7 @@ const locations = [
     img: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=700&h=500&q=80',
     alt: 'Guests chatting in the light-filled Fitzroy café',
     perks: ['Courtyard garden', 'Weekend DJs', 'Full menu + bakery'],
+    getting: 'Tram 86 along Gertrude Street. On-street parking, plus a bike rack out front.',
   },
   {
     name: 'South Melbourne',
@@ -31,6 +33,7 @@ const locations = [
     img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&h=500&q=80',
     alt: 'Tables set for brunch service at the South Melbourne café',
     perks: ['Next to the market', 'Espresso window', 'Brunch menu'],
+    getting: 'Across from South Melbourne Market. Tram 96 stops at the door.',
   },
 ];
 ---
@@ -57,7 +60,7 @@ const locations = [
 
   <section class="mx-auto max-w-6xl space-y-10 px-4 pb-24 sm:px-6">
     {
-      locations.map(({ name, tag, address, hours, phone, img, alt, perks }, i) => (
+      locations.map(({ name, tag, address, hours, phone, img, alt, perks, getting }, i) => (
         <article
           class:list={[
             'grid items-center gap-8 overflow-hidden rounded-organic border border-ink/10 bg-paper shadow-sm transition-shadow duration-300 hover:shadow-xl md:grid-cols-2 dark:border-cream/10 dark:bg-espresso-soft',
@@ -92,6 +95,13 @@ const locations = [
                 </li>
               ))}
             </ul>
+            <p class="mt-4 flex items-start gap-2 text-sm text-ink-soft dark:text-cream/70">
+              <svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              {getting}
+            </p>
             <a
               href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
               rel="noopener noreferrer"

@@ -1,9 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const hours = [
+  { day: 'Monday', lanes: '7am – 4pm', south: 'Closed' },
+  { day: 'Tuesday', lanes: '7am – 4pm', south: 'Closed' },
+  { day: 'Wednesday', lanes: '7am – 4pm', south: '7am – 3pm' },
+  { day: 'Thursday', lanes: '7am – 4pm', south: '7am – 3pm' },
+  { day: 'Friday', lanes: '7am – 4pm', south: '7am – 3pm' },
+  { day: 'Saturday', lanes: '7am – 4pm', south: '7am – 3pm' },
+  { day: 'Sunday', lanes: '7am – 4pm', south: '7am – 3pm' },
+];
+
 const faqs = [
   { q: 'Do you take bookings?', a: 'Yes — for groups of any size at Hardware Lane and Fitzroy. South Melbourne is walk-in only (it moves quickly, promise).' },
   { q: 'Are dogs welcome?', a: 'Outside seats at every venue, plus the Fitzroy courtyard. Water bowls always out.' },
+  { q: 'Do you cater for dietary needs?', a: 'Plenty — vegan, vegetarian and gluten-free options are marked on the menu, and most dishes adapt happily. Just tell your server.' },
+  { q: 'Is there Wi-Fi?', a: 'Yes, free and reliable at all three rooms. Laptops welcome before 11am on weekdays.' },
   { q: 'Can you host events?', a: 'Fitzroy takes evening bookings for private events of up to 60. Email us for the events pack.' },
   { q: 'Do you sell beans?', a: 'Yes — our house blend and rotating single origins, whole bean or ground, at every counter.' },
 ];
@@ -41,20 +53,21 @@ const faqs = [
       </div>
 
       <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-        <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Hours</h2>
-        <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/75">
-          Open daily 7am – 4pm<br />
-          <span class="text-xs">(South Melbourne: Wed–Sun, 7am – 3pm)</span>
-        </p>
-      </div>
-
-      <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
         <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Reach us</h2>
         <ul class="mt-3 space-y-2 text-sm text-ink-soft dark:text-cream/75">
           <li><a href="tel:+61390002017" class="transition-colors hover:text-primary">(03) 9000 2017</a></li>
           <li><a href="mailto:hello@cafeteekaapi.com.au" class="transition-colors hover:text-primary">hello@cafeteekaapi.com.au</a></li>
           <li><a href="https://instagram.com" rel="noopener noreferrer" target="_blank" class="transition-colors hover:text-primary">@cafeteekaapi ↗</a></li>
         </ul>
+      </div>
+
+      <div class="rounded-organic border border-ink/10 bg-paper p-7 shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+        <h2 class="font-display text-lg font-bold text-secondary dark:text-secondary-soft">Large groups &amp; events</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/75">
+          Parties of 9+ or a private room? Email
+          <a href="mailto:events@cafeteekaapi.com.au" class="font-semibold text-primary underline-offset-2 hover:underline">events@cafeteekaapi.com.au</a>
+          and we'll sort the rest.
+        </p>
       </div>
     </div>
 
@@ -124,28 +137,57 @@ const faqs = [
     </div>
   </section>
 
-  <!-- FAQs -->
-  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="faq-heading">
+  <!-- Opening hours -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="hours-heading">
     <div class="mx-auto max-w-3xl px-4 sm:px-6">
       <div class="text-center" data-reveal>
-        <p class="font-script text-3xl text-primary">good to know</p>
-        <h2 id="faq-heading" class="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl">Questions, answered</h2>
+        <p class="font-script text-3xl text-primary">when to find us</p>
+        <h2 id="hours-heading" class="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl">Opening hours</h2>
       </div>
-      <div class="mt-10 space-y-4">
-        {
-          faqs.map(({ q, a }) => (
-            <details class="group rounded-organic border border-ink/10 bg-paper px-6 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display font-bold marker:hidden">
-                {q}
-                <svg class="size-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-                  <path d="M12 5v14m-7-7h14" />
-                </svg>
-              </summary>
-              <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{a}</p>
-            </details>
-          ))
-        }
+      <div class="mt-10 overflow-hidden rounded-organic border border-ink/10 bg-paper shadow-sm dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+        <table class="w-full text-left text-sm">
+          <caption class="sr-only">Opening hours by venue</caption>
+          <thead>
+            <tr class="border-b border-ink/10 text-xs uppercase tracking-wider text-ink-soft dark:border-cream/10 dark:text-cream/60">
+              <th scope="col" class="px-5 py-3 font-semibold">Day</th>
+              <th scope="col" class="px-5 py-3 font-semibold">Hardware Lane &amp; Fitzroy</th>
+              <th scope="col" class="px-5 py-3 font-semibold">South Melbourne</th>
+            </tr>
+          </thead>
+          <tbody>
+            {hours.map(({ day, lanes, south }) => (
+              <tr class="border-b border-ink/5 last:border-0 dark:border-cream/5">
+                <th scope="row" class="px-5 py-3 font-semibold text-ink dark:text-cream">{day}</th>
+                <td class="px-5 py-3 text-ink-soft dark:text-cream/75">{lanes}</td>
+                <td class="px-5 py-3 text-ink-soft dark:text-cream/75">{south}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="mx-auto max-w-3xl px-4 py-20 sm:px-6" aria-labelledby="faq-heading">
+    <div class="text-center" data-reveal>
+      <p class="font-script text-3xl text-primary">good to know</p>
+      <h2 id="faq-heading" class="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl">Questions, answered</h2>
+    </div>
+    <div class="mt-10 space-y-4">
+      {
+        faqs.map(({ q, a }) => (
+          <details class="group rounded-organic border border-ink/10 bg-paper px-6 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display font-bold marker:hidden">
+              {q}
+              <svg class="size-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14m-7-7h14" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{a}</p>
+          </details>
+        ))
+      }
     </div>
   </section>
 
