@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Coffee & Drinks',
+    blurb: 'Single origin, locally roasted, dialled in daily.',
+    items: [
+      { name: 'Espresso / Long Black', desc: 'Seasonal single origin.', price: '$4.5', tags: ['VG', 'GF'] },
+      { name: 'Flat White / Latte / Cap', desc: 'Velvet-textured milk, latte art standard.', price: '$5.5', tags: ['V'] },
+      { name: 'Batch Brew', desc: 'Rotating filter roast, bottomless before 9am.', price: '$5', tags: ['VG', 'GF'] },
+      { name: 'Chai Latte', desc: 'House-spiced, honey-sweetened, properly simmered.', price: '$6', tags: ['V'] },
+      { name: 'Fresh OJ / Seasonal Juice', desc: 'Pressed to order.', price: '$8', tags: ['VG', 'GF'] },
+      { name: 'Iced Coffee (proper)', desc: 'Double shot, milk, no ice-cream theatrics.', price: '$7', tags: ['V'] },
+    ],
+  },
+  {
+    title: 'All-Day Brunch',
+    blurb: 'Served 7am – 3:30pm, every day.',
+    items: [
+      { name: 'Great Days Big Brunch', desc: 'Eggs any way, halloumi, avo, mushrooms, relish, sourdough.', price: '$26', tags: [] },
+      { name: 'Ricotta Hotcakes', desc: 'Lemon ricotta, berries, whipped honey butter.', price: '$22', tags: ['V'] },
+      { name: 'Smashed Avo', desc: 'Feta, pepitas, pickled onion, lime, chilli oil, sourdough.', price: '$19', tags: ['V'] },
+      { name: 'Mushroom Toast', desc: 'Butter-roasted mixed mushrooms, whipped goat cheese, thyme.', price: '$20', tags: ['V'] },
+      { name: 'Chilli Scramble', desc: 'Soft scrambled eggs, crispy chilli oil, spring onion, milk bun.', price: '$18', tags: ['V'] },
+      { name: 'Brekkie Roll', desc: 'Bacon, fried egg, hash brown, cheese, house BBQ sauce.', price: '$16', tags: [] },
+    ],
+  },
+  {
+    title: 'Lunch',
+    blurb: 'From 11:30am.',
+    items: [
+      { name: 'Chicken Schnitzel Sando', desc: 'Slaw, pickles, garlic aioli, milk bread.', price: '$19', tags: [] },
+      { name: 'Harvest Bowl', desc: 'Roast pumpkin, quinoa, kale, hummus, seeds, tahini dressing.', price: '$21', tags: ['VG', 'GF'] },
+      { name: 'TeeKaapi Burger', desc: 'Grass-fed beef, cheddar, tomato jam, butter lettuce, chips.', price: '$24', tags: [] },
+    ],
+  },
+  {
+    title: 'Sweet Things',
+    blurb: 'Baked every morning.',
+    items: [
+      { name: 'Almond Croissant', desc: 'Twice-baked, frangipane-filled.', price: '$8', tags: ['V'] },
+      { name: 'Banana Bread', desc: 'Toasted, espresso butter.', price: '$9', tags: ['V'] },
+      { name: 'Seasonal Cake', desc: 'Ask what came out of the oven today.', price: '$9', tags: ['V'] },
+    ],
+  },
+];
+
+const tagLabels: Record<string, string> = { V: 'Vegetarian', VG: 'Vegan', GF: 'Gluten free' };
+---
+
+<BaseLayout
+  title="Menu — Cafe TeeKaapi"
+  description="All-day brunch, handcrafted coffee, and morning-baked sweets. Browse the full Cafe TeeKaapi menu — served daily 7am to 4pm."
+>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute -left-24 top-10 size-64 rounded-full bg-secondary/10 blur-3xl"></div>
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+      <p class="font-script text-3xl text-primary" data-reveal>eat, drink, linger</p>
+      <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl" data-reveal>The menu</h1>
+      <p class="mx-auto mt-5 max-w-xl text-ink-soft dark:text-cream/70" data-reveal>
+        All-day brunch till 3:30pm, lunch from 11:30am, coffee until the doors close.
+      </p>
+
+      <nav aria-label="Menu sections" class="mt-8 flex flex-wrap justify-center gap-2" data-reveal>
+        {
+          sections.map(({ title }) => (
+            <a
+              href={`#${title.toLowerCase().replace(/[^a-z]+/g, '-')}`}
+              class="rounded-full border border-ink/15 px-4 py-2 text-sm font-medium transition-colors duration-200 hover:border-secondary hover:bg-secondary/10 hover:text-secondary dark:border-cream/20 dark:hover:border-secondary-soft dark:hover:text-secondary-soft"
+            >
+              {title}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl space-y-16 px-4 pb-24 sm:px-6">
+    {
+      sections.map(({ title, blurb, items }) => (
+        <section id={title.toLowerCase().replace(/[^a-z]+/g, '-')} aria-label={title} class="scroll-mt-24">
+          <div class="flex items-baseline gap-4" data-reveal>
+            <h2 class="shrink-0 font-display text-2xl font-bold tracking-tight text-secondary sm:text-3xl dark:text-secondary-soft">{title}</h2>
+            <div aria-hidden="true" class="h-px w-full bg-ink/15 dark:bg-cream/15" />
+          </div>
+          <p class="mt-2 font-script text-xl text-primary" data-reveal>{blurb}</p>
+
+          <ul class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {items.map(({ name, desc, price, tags }) => (
+              <li class="group" data-reveal>
+                <div class="flex items-baseline justify-between gap-3">
+                  <h3 class="font-display text-lg font-bold transition-colors duration-200 group-hover:text-primary">{name}</h3>
+                  <span aria-hidden="true" class="mb-1 grow border-b border-dotted border-ink/25 dark:border-cream/25" />
+                  <span class="shrink-0 font-display font-bold text-primary">{price}</span>
+                </div>
+                <p class="mt-1 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{desc}</p>
+                {tags.length > 0 && (
+                  <p class="mt-1.5 flex gap-1.5">
+                    {tags.map((t) => (
+                      <abbr
+                        title={tagLabels[t]}
+                        class="rounded-full bg-secondary/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-secondary no-underline dark:bg-secondary/25 dark:text-secondary-soft"
+                      >
+                        {t}
+                      </abbr>
+                    ))}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    <p class="rounded-3xl bg-cream-soft p-5 text-center text-sm text-ink-soft dark:bg-espresso-soft dark:text-cream/70" data-reveal>
+      Dietaries welcome — most dishes adapt happily. Weekend tables go fast:
+      <a href="/contact#book" class="font-semibold text-primary underline-offset-2 hover:underline">book ahead</a>.
+    </p>
+  </section>
+</BaseLayout>

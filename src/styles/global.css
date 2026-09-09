@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by data-theme="dark" on <html> */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  /*
+   * ── Brand tokens ─────────────────────────────────────────────
+   * Change primary/secondary here and the entire site rebrands.
+   */
+  --color-primary: #e1701a;
+  --color-primary-strong: #b95510;
+  --color-primary-soft: #f8d9bd;
+  --color-secondary: #17605a;
+  --color-secondary-strong: #0f4540;
+  --color-secondary-soft: #bcded9;
+  --color-accent: #c99a3c;
+
+  /* Surfaces & ink */
+  --color-cream: #faf4e8;
+  --color-cream-soft: #f2e8d4;
+  --color-paper: #fffcf5;
+  --color-espresso: #191410;
+  --color-espresso-soft: #262019;
+  --color-ink: #2b2018;
+  --color-ink-soft: #6b5b4c;
+
+  /* Typography */
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-script: "Caveat", cursive;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Scroll-reveal animation (opt-in via data-reveal) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle sway for botanical decorations */
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-sway {
+  animation: sway 7s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Slow spin for the "brewed with passion" badge */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-sway,
+  .animate-spin-slow {
+    animation: none;
+  }
+
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

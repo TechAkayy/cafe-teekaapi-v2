@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+  { title: 'Craft in every cup', desc: 'Single-origin beans roasted locally, dialled in every morning, poured with care.' },
+  { title: 'Made from scratch', desc: 'Bread, relishes, pickles, pastries — if it’s on your plate, it started in our kitchen.' },
+  { title: 'Warmth first', desc: 'Hospitality means noticing: your usual order, your dog’s name, your good and bad days.' },
+];
+
+const team = [
+  { name: 'Anjali Nair', role: 'Founder & Head of Coffee', bio: 'Started TeeKaapi with one espresso machine and a folding table in 2017.' },
+  { name: 'Tom Whitfield', role: 'Head Chef', bio: 'Ex fine-dining, now devoted to the perfect ricotta hotcake.' },
+  { name: 'Grace Park', role: 'Venue Manager', bio: 'Knows every regular’s order — and their coffee mood — on sight.' },
+];
+---
+
+<BaseLayout
+  title="About — Cafe TeeKaapi"
+  description="Est. 2017 on Hardware Lane. The story, the values, and the people behind Cafe TeeKaapi's handcrafted coffee and brunch."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute -right-24 top-12 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
+      <div>
+        <p class="font-script text-3xl text-primary" data-reveal>our story</p>
+        <h1 class="mt-2 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl" data-reveal>
+          Nine years of<br />great <em class="text-secondary dark:text-secondary-soft">days</em>
+        </h1>
+        <p class="mt-6 max-w-md leading-relaxed text-ink-soft dark:text-cream/70" data-reveal>
+          In 2017 we opened an espresso window barely wide enough for two elbows. Melbourne queued
+          anyway. A year later we knocked through the wall, added a kitchen, and Cafe TeeKaapi
+          became what it is today: the warm middle of Hardware Lane.
+        </p>
+        <p class="mt-4 max-w-md leading-relaxed text-ink-soft dark:text-cream/70" data-reveal>
+          The name? "Tee" for the tea our grandmothers brewed, "Kaapi" for the South Indian filter
+          coffee that started it all. Two traditions, one very Melbourne room.
+        </p>
+      </div>
+      <div class="relative" data-reveal>
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&h=1000&q=80"
+          alt="Warm café interior with pendant lights and wooden furniture"
+          width="800"
+          height="1000"
+          class="aspect-[4/5] w-full rounded-[2.5rem] object-cover shadow-2xl"
+          fetchpriority="high"
+        />
+        <figure class="absolute -bottom-8 -right-4 w-36 rotate-[5deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=400&h=300&q=80"
+            alt=""
+            width="400"
+            height="300"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full rounded object-cover"
+          />
+          <figcaption class="mt-1.5 text-center font-script text-lg text-ink-soft dark:text-cream/60">day one, 2017</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="values-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="text-center" data-reveal>
+        <p class="font-script text-3xl text-primary">what we believe</p>
+        <h2 id="values-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Three simple promises</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          values.map(({ title, desc }, i) => (
+            <article class="rounded-[2rem] border border-ink/10 bg-paper p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+              <p class="mx-auto grid size-12 place-items-center rounded-full bg-secondary/10 font-display text-lg font-bold text-secondary dark:bg-secondary/25 dark:text-secondary-soft" aria-hidden="true">
+                {i + 1}
+              </p>
+              <h3 class="mt-5 font-display text-xl font-bold">{title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="team-heading">
+    <div class="text-center" data-reveal>
+      <p class="font-script text-3xl text-primary">the people</p>
+      <h2 id="team-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Meet the family</h2>
+    </div>
+    <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        team.map(({ name, role, bio }) => (
+          <li class="rounded-[2rem] border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <p class="grid size-14 place-items-center rounded-full bg-primary/15 font-display text-xl font-bold text-primary" aria-hidden="true">
+              {name.split(' ').map((n) => n[0]).join('')}
+            </p>
+            <h3 class="mt-5 font-display text-xl font-bold">{name}</h3>
+            <p class="text-sm font-semibold text-secondary dark:text-secondary-soft">{role}</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{bio}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-16 text-center" data-reveal>
+      <a
+        href="/menu"
+        class="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
+      >
+        Now, brunch?
+        <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

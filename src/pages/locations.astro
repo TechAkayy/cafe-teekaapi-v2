@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locations = [
+  {
+    name: 'Hardware Lane',
+    tag: 'The original · Est. 2017',
+    address: '18 Hardware Lane, Melbourne VIC 3000',
+    hours: 'Daily 7am – 4pm',
+    phone: '(03) 9000 2017',
+    img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&h=500&q=80',
+    alt: 'The warm interior of the original Hardware Lane café',
+    perks: ['Laneway seating', 'Dog friendly', 'Full menu'],
+  },
+  {
+    name: 'Fitzroy',
+    tag: 'The sunny one · Est. 2021',
+    address: '204 Gertrude Street, Fitzroy VIC 3065',
+    hours: 'Daily 7am – 4pm',
+    phone: '(03) 9000 2021',
+    img: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=700&h=500&q=80',
+    alt: 'Guests chatting in the light-filled Fitzroy café',
+    perks: ['Courtyard garden', 'Weekend DJs', 'Full menu + bakery'],
+  },
+  {
+    name: 'South Melbourne',
+    tag: 'The market one · Est. 2024',
+    address: '89 Cecil Street, South Melbourne VIC 3205',
+    hours: 'Wed – Sun 7am – 3pm',
+    phone: '(03) 9000 2024',
+    img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&h=500&q=80',
+    alt: 'Tables set for brunch service at the South Melbourne café',
+    perks: ['Next to the market', 'Espresso window', 'Brunch menu'],
+  },
+];
+---
+
+<BaseLayout
+  title="Locations — Cafe TeeKaapi"
+  description="Three warm rooms across Melbourne: Hardware Lane, Fitzroy and South Melbourne. Addresses, hours and what makes each Cafe TeeKaapi special."
+>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute -right-24 top-10 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+      <p class="font-script text-3xl text-primary" data-reveal>find us</p>
+      <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl" data-reveal>Three rooms, one welcome</h1>
+      <p class="mx-auto mt-5 max-w-xl text-ink-soft dark:text-cream/70" data-reveal>
+        Same beans, same bakers, same hospitality — pick the room that suits your morning.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl space-y-10 px-4 pb-24 sm:px-6">
+    {
+      locations.map(({ name, tag, address, hours, phone, img, alt, perks }, i) => (
+        <article
+          class:list={[
+            'grid items-center gap-8 overflow-hidden rounded-[2.5rem] border border-ink/10 bg-paper shadow-sm transition-shadow duration-300 hover:shadow-xl md:grid-cols-2 dark:border-cream/10 dark:bg-espresso-soft',
+          ]}
+          data-reveal
+        >
+          <div class:list={['overflow-hidden max-md:order-first', i % 2 === 1 && 'md:order-last']}>
+            <img
+              src={img}
+              alt={alt}
+              width="700"
+              height="500"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              class="aspect-[7/5] w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div class="p-8 md:p-10">
+            <p class="font-script text-2xl text-primary">{tag}</p>
+            <h2 class="mt-1 font-display text-3xl font-bold tracking-tight">{name}</h2>
+            <address class="mt-4 space-y-1.5 text-sm not-italic leading-relaxed text-ink-soft dark:text-cream/75">
+              <p>{address}</p>
+              <p class="font-semibold text-ink dark:text-cream">{hours}</p>
+              <p>
+                <a href={`tel:+61${phone.replace(/[^0-9]/g, '').slice(1)}`} class="transition-colors hover:text-primary">{phone}</a>
+              </p>
+            </address>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {perks.map((perk) => (
+                <li class="rounded-full bg-secondary/10 px-3.5 py-1.5 text-xs font-semibold text-secondary dark:bg-secondary/25 dark:text-secondary-soft">
+                  {perk}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="group mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-strong"
+            >
+              Get directions
+              <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7m0 0H8m9 0v9" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))
+    }
+
+    <div class="rounded-[2.5rem] bg-secondary px-8 py-12 text-center text-cream shadow-xl dark:bg-secondary-strong" data-reveal>
+      <p class="font-script text-3xl text-primary-soft">planning a visit?</p>
+      <h2 class="mt-1 font-display text-2xl font-bold sm:text-3xl">Weekends fill fast at all three rooms</h2>
+      <a
+        href="/contact#book"
+        class="mt-6 inline-block rounded-full bg-cream px-8 py-3.5 font-semibold text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-soft"
+      >
+        Book a Table
+      </a>
+    </div>
+  </section>
+</BaseLayout>

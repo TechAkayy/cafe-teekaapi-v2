@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const dishes = [
+  {
+    name: 'Signature Latte',
+    desc: 'Single-origin espresso, velvet milk, latte art on every pour.',
+    price: '$5.5',
+    img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&h=700&q=80',
+    alt: 'Latte with heart-shaped latte art beside a newspaper',
+  },
+  {
+    name: 'Great Days Big Brunch',
+    desc: 'Free-range eggs, halloumi, smashed avo, sourdough, house relish.',
+    price: '$26',
+    img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&h=700&q=80',
+    alt: 'A generous brunch plate with eggs and vegetables',
+  },
+  {
+    name: 'Ricotta Hotcakes',
+    desc: 'Lemon ricotta, seasonal berries, whipped honey butter.',
+    price: '$22',
+    img: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&h=700&q=80',
+    alt: 'Stack of hotcakes with berries and syrup',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'The kind of café you plan your whole morning around. Coffee is flawless, staff remember your name.',
+    name: 'Sofia R.',
+    detail: 'Regular since 2019',
+  },
+  {
+    quote: 'Best brunch in the CBD, no contest. The ricotta hotcakes should be heritage listed.',
+    name: 'Daniel K.',
+    detail: 'Local food blogger',
+  },
+  {
+    quote: 'Warm, welcoming, and the flat white is consistently perfect. My Saturday ritual.',
+    name: 'Mei L.',
+    detail: 'Hardware Lane neighbour',
+  },
+];
+
+const gallery = [
+  { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Cosy café interior with warm lighting' },
+  { img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Espresso cup with coffee beans scattered around' },
+  { img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&h=500&q=80', alt: 'Restaurant tables set for service' },
+  { img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&h=500&q=80', alt: 'French toast with fruit on a white plate' },
+];
+---
+
+<BaseLayout
+  title="Cafe TeeKaapi — Where Great Days Begin"
+  description="Handcrafted coffee, delicious brunch and warm hospitality — all day, every day. Est. 2017 on Hardware Lane, Melbourne."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -right-24 top-16 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+      <div class="absolute -left-24 bottom-0 size-72 rounded-full bg-secondary/10 blur-3xl"></div>
+      <!-- Botanical leaf -->
+      <svg class="animate-sway absolute right-10 top-24 h-24 w-16 text-secondary/30 max-md:hidden" viewBox="0 0 40 80" fill="currentColor">
+        <path d="M20 0C10 20 0 35 20 80 40 35 30 20 20 0z" />
+      </svg>
+      <!-- Wavy lines -->
+      <svg class="absolute bottom-10 left-8 w-28 text-secondary/40 max-md:hidden" viewBox="0 0 100 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M2 6c8-8 16 8 24 0s16 8 24 0 16 8 24 0 16 8 24 0" />
+        <path d="M2 18c8-8 16 8 24 0s16 8 24 0 16 8 24 0 16 8 24 0" />
+      </svg>
+    </div>
+
+    <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-secondary dark:text-secondary-soft" data-reveal>
+          Coffee · Brunch · Good Vibes
+        </p>
+
+        <h1 class="mt-6" data-reveal>
+          <span class="font-script text-4xl text-primary sm:text-5xl">Where</span><br />
+          <span class="font-display text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+            Great Days<br />Begin <em class="text-secondary dark:text-secondary-soft">Here</em>
+          </span>
+        </h1>
+
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-ink-soft dark:text-cream/70" data-reveal>
+          Handcrafted coffee, delicious brunch and warm hospitality — all day, every day.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4" data-reveal>
+          <a
+            href="/menu"
+            class="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong"
+          >
+            Explore Menu
+            <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" />
+            </svg>
+          </a>
+          <a
+            href="/about"
+            class="rounded-full border-2 border-ink/20 px-7 py-3.5 font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:text-secondary dark:border-cream/25 dark:hover:border-secondary-soft dark:hover:text-secondary-soft"
+          >
+            Our Story
+          </a>
+        </div>
+      </div>
+
+      <div class="relative" data-reveal>
+        <div class="overflow-hidden rounded-[2.5rem] shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=1050&q=80"
+            alt="A beautifully poured latte on a rustic wooden table"
+            width="900"
+            height="1050"
+            class="aspect-[6/7] w-full object-cover transition-transform duration-700 hover:scale-105"
+            fetchpriority="high"
+          />
+        </div>
+
+        <!-- Polaroid -->
+        <figure class="absolute -bottom-8 -left-6 w-36 rotate-[-6deg] rounded-lg bg-paper p-2 pb-6 shadow-xl transition-transform duration-300 hover:rotate-0 sm:w-44 dark:bg-espresso-soft" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=400&h=300&q=80"
+            alt=""
+            width="400"
+            height="300"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full rounded object-cover"
+          />
+          <figcaption class="mt-1.5 text-center font-script text-lg text-ink-soft dark:text-cream/60">TeeKaapi</figcaption>
+        </figure>
+
+        <!-- Brewed with passion badge -->
+        <div class="absolute -right-4 top-6 grid size-24 place-items-center sm:size-28" aria-hidden="true">
+          <svg class="animate-spin-slow absolute inset-0 size-full text-accent" viewBox="0 0 100 100">
+            <defs>
+              <path id="badge-circle" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
+            </defs>
+            <circle cx="50" cy="50" r="47" class="fill-accent/90" />
+            <text class="fill-espresso font-body text-[11px] font-bold uppercase tracking-[0.3em]">
+              <textPath href="#badge-circle">Brewed · with · Passion · </textPath>
+            </text>
+          </svg>
+          <svg class="relative size-8 text-espresso" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2 21h18v-2H2v2zM20 8h-2V5h2a2 2 0 0 1 0 3zm0-5h-2V2H4v11a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-3h2a4 4 0 0 0 0-8z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our story teaser -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="story-heading">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2">
+      <div data-reveal>
+        <p class="font-script text-3xl text-primary">since 2017</p>
+        <h2 id="story-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          A little lane, a lot of heart
+        </h2>
+        <p class="mt-5 leading-relaxed text-ink-soft dark:text-cream/70">
+          What began as a tiny espresso window on Hardware Lane grew into Melbourne's warmest
+          brunch room. Nine years on, we still hand-pour every coffee, bake every morning, and
+          greet half our guests by name.
+        </p>
+        <a href="/about" class="group mt-7 inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-secondary-strong dark:text-secondary-soft">
+          Read our story
+          <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14m-6-6 6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+      <div class="relative" data-reveal>
+        <img
+          src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&h=600&q=80"
+          alt="Friends enjoying coffee together at a café"
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          class="rounded-[2rem] object-cover shadow-xl"
+        />
+        <div aria-hidden="true" class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[2rem] border-2 border-primary/40"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature dishes -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="dishes-heading">
+    <div class="text-center" data-reveal>
+      <p class="font-script text-3xl text-primary">crowd favourites</p>
+      <h2 id="dishes-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Signature dishes</h2>
+    </div>
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        dishes.map(({ name, desc, price, img, alt }) => (
+          <li
+            class="group overflow-hidden rounded-[2rem] border border-ink/10 bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft"
+            data-reveal
+          >
+            <div class="overflow-hidden">
+              <img
+                src={img}
+                alt={alt}
+                width="600"
+                height="700"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[6/7] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 class="font-display text-xl font-bold">{name}</h3>
+                <span class="shrink-0 font-display text-lg font-bold text-primary">{price}</span>
+              </div>
+              <p class="mt-2 text-sm leading-relaxed text-ink-soft dark:text-cream/70">{desc}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-10 text-center" data-reveal>
+      <a href="/menu" class="group inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-secondary-strong dark:text-secondary-soft">
+        See the full menu
+        <svg class="size-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+      </a>
+    </p>
+  </section>
+
+  <!-- Gallery -->
+  <section class="bg-cream-soft py-20 transition-colors duration-300 dark:bg-black/20" aria-labelledby="gallery-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="text-center" data-reveal>
+        <p class="font-script text-3xl text-primary">moments</p>
+        <h2 id="gallery-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Life at TeeKaapi</h2>
+      </div>
+      <ul class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+        {
+          gallery.map(({ img, alt }, i) => (
+            <li class:list={['overflow-hidden rounded-3xl shadow-sm', i % 2 === 1 && 'md:mt-8']} data-reveal>
+              <img
+                src={img}
+                alt={alt}
+                width="500"
+                height="500"
+                loading="lazy"
+                decoding="async"
+                class="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="testimonials-heading">
+    <div class="text-center" data-reveal>
+      <p class="font-script text-3xl text-primary">kind words</p>
+      <h2 id="testimonials-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">From our regulars</h2>
+    </div>
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        testimonials.map(({ quote, name, detail }) => (
+          <li class="rounded-[2rem] border border-ink/10 bg-paper p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-cream/10 dark:bg-espresso-soft" data-reveal>
+            <div class="flex gap-1 text-accent" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map(() => (
+                <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="mt-4">
+              <p class="leading-relaxed text-ink-soft dark:text-cream/75">“{quote}”</p>
+            </blockquote>
+            <p class="mt-5 font-display font-bold">{name}</p>
+            <p class="text-sm text-ink-soft dark:text-cream/60">{detail}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Visit us -->
+  <section class="px-4 pb-20 sm:px-6" aria-labelledby="visit-heading">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[2.5rem] bg-secondary px-8 py-14 text-cream shadow-2xl md:grid-cols-2 md:px-14 dark:bg-secondary-strong" data-reveal>
+      <div>
+        <p class="font-script text-3xl text-primary-soft">come say hi</p>
+        <h2 id="visit-heading" class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">Visit us on Hardware Lane</h2>
+        <p class="mt-4 max-w-md leading-relaxed text-cream/80">
+          Open daily 7am–4pm. Two more rooms in Fitzroy and South Melbourne — same beans, same welcome.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-4">
+          <a href="/locations" class="rounded-full bg-cream px-7 py-3.5 font-semibold text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-soft">
+            All locations
+          </a>
+          <a href="/contact#book" class="rounded-full border-2 border-cream/40 px-7 py-3.5 font-semibold text-cream transition-all duration-200 hover:-translate-y-0.5 hover:border-cream">
+            Book a Table
+          </a>
+        </div>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&h=600&q=80"
+        alt="Barista at work behind the espresso machine"
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+        class="rounded-[2rem] object-cover shadow-xl"
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found — Cafe TeeKaapi"
+  description="That page isn't on today's menu. Head back to Cafe TeeKaapi."
+>
+  <section class="mx-auto flex max-w-3xl flex-col items-center px-4 py-28 text-center sm:px-6">
+    <p class="font-display text-8xl font-bold text-primary/20 dark:text-primary/30" aria-hidden="true">404</p>
+    <p class="mt-2 font-script text-3xl text-primary">oops…</p>
+    <h1 class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+      That page isn't on today's menu
+    </h1>
+    <p class="mt-4 max-w-md text-ink-soft dark:text-cream/70">
+      But great days are still on — the coffee's hot and the hotcakes are stacked.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/" class="rounded-full bg-primary px-7 py-3.5 font-semibold text-cream shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-strong">
+        Back home
+      </a>
+      <a href="/menu" class="rounded-full border-2 border-ink/20 px-7 py-3.5 font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:text-secondary dark:border-cream/25 dark:hover:border-secondary-soft dark:hover:text-secondary-soft">
+        See the menu
+      </a>
+    </div>
+  </section>
+</BaseLayout>
